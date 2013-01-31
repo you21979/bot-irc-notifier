@@ -3,6 +3,7 @@
 ######################################################
 TSC = tsc
 NODE = node
+NPM = npm
 COMPILE = $(TSC) --sourcemap --target ES5
 EXEC = $(NODE)
 
@@ -29,4 +30,6 @@ exec: $(OUTFILES)
 clean:
 	-rm $(OUTFILES) *.js.map
 
+setup:
+	$(NPM) install irc
 
