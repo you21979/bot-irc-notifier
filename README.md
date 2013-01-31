@@ -6,3 +6,5 @@ bot-irc-notifier
     cp config.json.org config.json
     vi config.json
     make
+
+まだ作りかけ
