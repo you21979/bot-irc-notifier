@@ -1,0 +1,5 @@
+{
+    "hostname" : "10.0.0.1",
+    "botname" : "svmon",
+    "channels" : ["#hogehoge"]
+}
