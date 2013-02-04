@@ -11,7 +11,8 @@ EXEC = $(NODE)
 TARGET = app.js
 SRCDIR = .
 OUTFILES = \
-	bot.js \
+	proxy.js \
+	io_irc.js \
 	app.js
 
 
