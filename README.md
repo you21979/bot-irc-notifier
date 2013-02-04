@@ -6,5 +6,12 @@ bot-irc-notifier
     cp config.json.org config.json
     vi config.json
     make
+    
 
+status
+============
 まだ作りかけ
+
+what's this
+===========
+redisにパブリッシュするとircに投稿するだけ
