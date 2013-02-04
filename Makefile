@@ -37,3 +37,10 @@ clean:
 setup:
 	$(NPM) install $(NPM_MODULES)
 
+package:
+	mkdir -p ircbot
+	cp $(OUTFILES) ircbot/
+	tar zcvf ircbot.tar.gz ircbot
+	rm -rf ircbot
+
+
