@@ -39,7 +39,7 @@ setup:
 
 package:
 	mkdir -p ircbot
-	cp $(OUTFILES) ircbot/
+	cp $(OUTFILES) config.json.org ircbot/
 	tar zcvf ircbot.tar.gz ircbot
 	rm -rf ircbot
 
