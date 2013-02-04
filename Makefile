@@ -14,6 +14,9 @@ OUTFILES = \
 	io_redis.js \
 	io_irc.js \
 	app.js
+NPM_MODULES= \
+	redis \
+	irc
 
 
 ######################################################
@@ -32,6 +35,5 @@ clean:
 	-rm $(OUTFILES) *.js.map
 
 setup:
-	$(NPM) install irc
-	$(NPM) install redis
+	$(NPM) install $(NPM_MODULES)
 
