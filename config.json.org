@@ -1,5 +1,7 @@
 {
-    "hostname" : "10.0.0.1",
-    "username" : "svmon",
-    "channels" : ["#hogehoge"]
+    "channels" : ["#hogehoge"],
+    "irchostname" : "10.0.0.1",
+    "ircusername" : "svmon",
+    "redishost": "127.0.0.1",
+    "redisport": 6379
 }

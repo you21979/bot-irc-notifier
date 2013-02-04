@@ -10,7 +10,7 @@ export interface Config{
     channels:string[];
 }
 export class Factory{
-    private irc_:any = null;
+    private conn_:any = null;
     /**
      *
      */
@@ -19,7 +19,7 @@ export class Factory{
      *
      */
     public connect(config:Config, cb:Callback):void{
-        this.irc_ = new irc.Client(config.hostname, config.username, {
+        this.conn_ = new irc.Client(config.hostname, config.username, {
             debug: true,
             channels: config.channels,
         });
@@ -29,24 +29,24 @@ export class Factory{
      *
      */
     public disconnect():void{
-        if(this.irc_){
+        if(this.conn_){
         }
     }
     /**
      *
      */
     public send(channel:string, message:string):void{
-        this.irc_.say(channel, message);
+        this.conn_.say(channel, message);
     }
     /**
      *
      */
     private _setEvent(cb:Callback):void{
         var self:Factory = this;
-        this.irc_.addListener('error', function(message) {
+        this.conn_.addListener('error', function(message) {
             console.error('ERROR: %s: %s', message.command, message.args.join(' '));
         });
-        this.irc_.addListener('message', function (from, to, message) {
+        this.conn_.addListener('message', function (from, to, message) {
             console.log('%s => %s: %s', from, to, message);
             if ( to.match(/^[#&]/) ) {
                 if(cb.chMessage){
@@ -61,16 +61,16 @@ export class Factory{
                 }
             }
         });
-        this.irc_.addListener('pm', function(nick, message) {
+        this.conn_.addListener('pm', function(nick, message) {
             console.log('Got private message from %s: %s', nick, message);
         });
-        this.irc_.addListener('join', function(channel, who) {
+        this.conn_.addListener('join', function(channel, who) {
             console.log('%s has joined %s', who, channel);
         });
-        this.irc_.addListener('part', function(channel, who, reason) {
+        this.conn_.addListener('part', function(channel, who, reason) {
             console.log('%s has left %s: %s', who, channel, reason);
         });
-        this.irc_.addListener('kick', function(channel, who, by, reason) {
+        this.conn_.addListener('kick', function(channel, who, by, reason) {
             console.log('%s was kicked from %s by %s: %s', who, channel, by, reason);
         });
     }

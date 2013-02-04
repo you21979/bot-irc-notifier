@@ -11,7 +11,7 @@ EXEC = $(NODE)
 TARGET = app.js
 SRCDIR = .
 OUTFILES = \
-	proxy.js \
+	io_redis.js \
 	io_irc.js \
 	app.js
 
@@ -33,4 +33,5 @@ clean:
 
 setup:
 	$(NPM) install irc
+	$(NPM) install redis
 
