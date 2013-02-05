@@ -10,12 +10,15 @@ var cfgIRC:ioirc.Config = {
     username : config.ircusername,
     channels : config.channels,
 };
+/**
+ *  IRC側の処理
+ */
 var cbIRC:ioirc.Callback = {
     chMessage : (irc:ioirc.Factory, from:string, to:string, message:string):void => {
-        irc.send(to, message);
+//        irc.send(to, message);
     },
     privMessage : (irc:ioirc.Factory, from:string, to:string, message:string):void => {
-        irc.send(from, message);
+//        irc.send(from, message);
     },
 };
 var irc:ioirc.Factory = new ioirc.Factory();
@@ -26,11 +29,13 @@ var cfgRedis:ioredis.Config = {
     port : config.redisport,
     channels : config.channels,
 };
+/**
+ *  REDIS側の処理 
+ */
 var cbRedis:ioredis.Callback = {
     chMessage : (redis:ioredis.Factory, channel:string, message:string):void => {
         irc.send(channel, message);
     },
 };
-
 var redis:ioredis.Factory = new ioredis.Factory();
 redis.connect(cfgRedis, cbRedis);

@@ -13,11 +13,11 @@ export class Factory{
     private hostname_:string = null;
     private port_:Number = 0;
     /**
-     *
+     *  コンストラクタ
      */
     constructor(){}
     /**
-     *
+     *  接続する
      */
     public connect(config:Config, cb:Callback):void{
         var self:Factory = this;
@@ -30,21 +30,23 @@ export class Factory{
         this.hostname_ = config.hostname;
     }
     /**
-     *
+     *  切断する
      */
     public disconnect():void{
         if(this.conn_){
+            this.conn_.end();
+            this.conn_ = null;
         }
     }
     /**
-     *
+     *  メッセージを送信する
      */
     public send(channel:string, message:string):void{
         var conn = redis.createClient(this.port_, this.hostname_);
         conn.publish(channel, message);
     }
     /**
-     *
+     *  イベントを設定する
      */
     private _setEvent(cb:Callback):void{
         var self:Factory = this;
