@@ -1,5 +1,5 @@
 ///<reference path='typescript/node.d.ts'/>
-var redis = require('redis');
+var redis:any = require('redis');
 export interface Callback{
     chMessage(redis:Factory, channel:string, message:string):void;
 }

@@ -1,5 +1,5 @@
 ///<reference path='typescript/node.d.ts'/>
-var irc = require('irc');
+var irc:any = require('irc');
 export interface Callback{
     chMessage(irc:Factory, from:string, to:string, message:string):void;
     privMessage(irc:Factory, from:string, to:string, message:string):void;

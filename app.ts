@@ -3,7 +3,7 @@ import fs = module('fs');
 import ioirc = module('io_irc');
 import ioredis = module('io_redis');
 
-var config = JSON.parse(<string>fs.readFileSync(__dirname + '/config.json', 'utf-8'));
+var config:any = JSON.parse(<string>fs.readFileSync(__dirname + '/config.json', 'utf-8'));
 
 var cfgIRC:ioirc.Config = {
     hostname : config.irchostname,
