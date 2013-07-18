@@ -1,28 +1,12 @@
 ///<reference path='typescript/node.d.ts'/>
 import fs = module('fs');
-import ioirc = module('io_irc');
+import ioirc = require('io_irc');
 import ioredis = module('io_redis');
 
 var config:any = JSON.parse(<string>fs.readFileSync(__dirname + '/config.json', 'utf-8'));
 
-var cfgIRC:ioirc.Config = {
-    hostname : config.irchostname,
-    username : config.ircusername,
-    channels : config.channels,
-};
-/**
- *  IRC側の処理
- */
-var cbIRC:ioirc.Callback = {
-    chMessage : (irc:ioirc.Factory, from:string, to:string, message:string):void => {
-//        irc.send(to, message);
-    },
-    privMessage : (irc:ioirc.Factory, from:string, to:string, message:string):void => {
-//        irc.send(from, message);
-    },
-};
-var irc:ioirc.Factory = new ioirc.Factory();
-irc.connect(cfgIRC, cbIRC);
+var irc = ioirc(config.irchostname, config.ircusername, config.channels);
+irc.connect();
 
 var cfgRedis:ioredis.Config = {
     hostname : config.redishostname,

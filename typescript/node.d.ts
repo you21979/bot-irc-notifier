@@ -12,6 +12,7 @@
 declare var process: NodeProcess;
 declare var global: any;
 
+/*
 declare var console: {
    log(...data: any[]): void;
    info(...data: any[]): void;
@@ -22,6 +23,7 @@ declare var console: {
    trace(label: string): void;
    assert(expression: any, ...message: string[]): void;
 }
+*/
 
 declare var __filename: string;
 declare var __dirname: string;
@@ -309,7 +311,7 @@ declare module "cluster" {
    }
    export interface Worker {
        id: string;
-       process: child_process;
+       //process: child_process;
        suicide: bool;
        send(message: any, sendHandle?: any): void;
        destroy(): void;
